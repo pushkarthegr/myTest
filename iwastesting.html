@@ -5,9 +5,15 @@
          data-client_id="182987625230-ufof7qkea2r99rtpuja6feiie90598o2.apps.googleusercontent.com"
          data-callback="handleCredentialResponse">
     </div>
-    <div class="g_id_signin" data-type="standard"></div>
+    <div class="g_id_signin" data-type="standard"></div><br>
     <a href="#" onclick="signOut();">Sign out</a>
       <script>
+        function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
         window.handleCredentialResponse = (response) => {
   // decodeJwtResponse() is a custom function defined by you
   // to decode the credential response.
@@ -29,12 +35,6 @@ declare global {
     handleCredentialResponse: (response: any) => void;
   }
 }
-        function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-    });
-  }
       </script>
   </body>
 </html>
